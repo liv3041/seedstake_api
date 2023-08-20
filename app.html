@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Startup Data</title>
+</head>
+<body>
+  <h1>Startup Data</h1>
+  <div id="startupData"></div>
+
+  <script>
+    console.log('JavaScript code is running.');
+    fetch('http://localhost:3000/startup/getAllstartup') // Replace with your backend endpoint
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        const startupDataDiv = document.getElementById('startupData');
+        data.startupsData.forEach(startup => {
+          const startupElement = document.createElement('div');
+          startupElement.innerHTML = `
+            <h2>${startup.name}</h2>
+            <img src="${startup.image}" alt="${startup.name}" width="200">
+            <p>Tagline: ${startup.tagline}</p>
+            <p>Description: ${startup.description}</p>
+            <hr>
+          `;
+          startupDataDiv.appendChild(startupElement);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+</body>
+</html>

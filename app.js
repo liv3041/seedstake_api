@@ -5,10 +5,18 @@ const cors = require("cors");
 require("./db/conn");
 const router = require("./Routes/router");
 const PORT = 3000;
-
+const bodyParser = require('body-parser');
 app.use(cors());
 app.use(express.json());
 app.use(router);
+app.use(bodyParser.json());
+
+app.post('/data', (req, res) => {
+    const jsonData = req.body; // JSON data sent from Postman
+    console.log(jsonData);
+    res.json({ message: 'Data received successfully.' });
+  });
+
 
 // get response
 app.get("/",(req,res)=>{
