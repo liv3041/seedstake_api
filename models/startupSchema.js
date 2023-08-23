@@ -30,6 +30,13 @@ description:{
     required:true,
     trim:true
 },
+category: {
+    type: String,
+    required: true,
+    enum:["Tech","HealthCare","Food","FinTech","Hospitality","Transport"],
+    default:"Tech"
+  },
+
 datecreated:Date,
 dateUpdated:Date
 });
