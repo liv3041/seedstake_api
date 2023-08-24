@@ -33,7 +33,7 @@ description:{
 category: {
     type: String,
     required: true,
-    enum:["Tech","HealthCare","Food","FinTech","Hospitality","Transport"],
+    enum:["Tech","Health","Food","FinTech","Hospitality","Travel"],
     default:"Tech"
   },
 
