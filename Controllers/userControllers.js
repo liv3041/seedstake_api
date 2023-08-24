@@ -37,16 +37,10 @@ exports.startuppost = async(req,res)=>{
 
 // get all startup
 exports.getStartup = async(req,res)=>{
-    const category = req.query.category || "";
-        const query ={};
-        
-            if(category !== "All"){
-               query.category = category;
-            }
-            console.log(query);
+    
     
     try {
-        const startupData = await startup.find(query);
+        const startupData = await startup.find();
         res.status(200).json(startupData);
     } catch (error) {
         res.status(400).json(error);
@@ -127,31 +121,31 @@ exports.updateStartup = async(req,res)=>{
     }
 
     // get startup by category
-    // exports.getStartupByCategory = async(req,res)=>{
-    //     const category = req.query.category || "";
-    //     const query ={};
-        
-    //         if(category !== "All"){
-    //            query.category = category;
-    //         }
-    //         console.log(query);
-        
-    //     try {
-    //         const startupData = await startup.find(query);
-    //         res.status(200).json(startupData);
-    //     } catch (error) {
-    //         res.status(400).json(error);
-    //         console.log("catch block error");
-            
-    //     }
-    // }
     exports.getStartupByCategory = async(req,res)=>{
-        const {category}=req.params;
+        const category = req.query.category || "";
+        const query ={};
+        
+            if(category !== "All"){
+               query.category = category;
+            }
+            console.log(query);
+        
         try {
-            const singlestartupData = await startup.find({category});
-            res.status(200).json(singlestartupData);
+            const startupData = await startup.find(query);
+            res.status(200).json(startupData);
         } catch (error) {
             res.status(400).json(error);
             console.log("catch block error");
+            
         }
     }
+    // exports.getStartupByCategory = async(req,res)=>{
+    //     const {category}=req.params;
+    //     try {
+    //         const singlestartupData = await startup.find({category});
+    //         res.status(200).json(singlestartupData);
+    //     } catch (error) {
+    //         res.status(400).json(error);
+    //         console.log("catch block error");
+    //     }
+    // }

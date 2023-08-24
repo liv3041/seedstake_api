@@ -12,5 +12,5 @@ router.get("/startup/singlestartup/:id",controllers.getSinglestartup);
 router.delete("/startup/deletestartup/:id", controllers.deleteStartup);
 router.put("/startup/updatestartup/:id",controllers.updateStartup);
 router.post("/startup/updateCategory/:id",controllers.updateCategory);
-router.get("/startup/getAllstartupbycategory/:category",controllers.getStartupByCategory);
+router.get("/startup/getAllstartupbycategory",controllers.getStartupByCategory);
 module.exports = router
