@@ -149,3 +149,20 @@ exports.updateStartup = async(req,res)=>{
     //         console.log("catch block error");
     //     }
     // }
+    exports.getStartupBySearch = async(req,res)=>{
+        const search = req.query.search || "";
+        const query ={
+            name:{$regex:search , $options:"i"}
+        };
+        
+            console.log(query);
+        
+        try {
+            const startupData = await startup.find(query);
+            res.status(200).json(startupData);
+        } catch (error) {
+            res.status(400).json(error);
+            console.log("catch block error");
+            
+        }
+    }
